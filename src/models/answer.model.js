@@ -7,12 +7,13 @@ var Answer = function(question){
     this.answers = question.questions
 }
 Answer.getAnswer = (quesNo, result)=>{
-    db.query(`select * from where ansid = ${quesNo}`,(err, res)=>{
+    console.log("qNO::",quesNo);
+    db.query(`select * from answer where qid = ${quesNo.queNO}`,(err, res)=>{
         if (err) {
             console.log(err);
             result(err, null)
         }else{
-            console.log(res);
+            // console.log(res);
             result(null, res)
         }
     })

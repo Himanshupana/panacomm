@@ -1,7 +1,7 @@
-// const express = require('express')
-// const router = express.Router()
+const express = require('express')
+const router = express.Router()
 
-// const ansController =  require('../controllers/answer.controller')
+const ansController =  require('../controllers/answer.controller')
 
-// router.post('/',ansController)
-// module.exports = router
+router.post('/',ansController.getAllAnswers)
+module.exports = router

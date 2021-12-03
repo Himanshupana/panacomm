@@ -44,13 +44,12 @@ User.LoginUser = (userData, result)=>{
                 result(err, null)
             }else{
                 console.log(res);
-    
                 result(null, res)
             }
         })
     }
     catch(err){
-        console.log('error while creating user');
+        console.log('user not found');
     }
 
     

@@ -28,8 +28,13 @@ exports.loginUser = (req, res) => {
     console.log('dta::', req.body);
     const userReqData = new usermodel(req.body);
     usermodel.LoginUser(userReqData, (err, result) => {
-        console.log("req data::", result);
-        res.json({ status: 200, message: 'login successfully', data: result })
+        if (result.length==0) {
+            console.log(err);
+            res.json({ status: 400, message: 'no data found', data: result })
+        }else{
+            console.log("req data::", result);
+            res.json({ status: 200, message: 'login successfully', data: result })
+        }
     })
 }
 
@@ -50,10 +55,10 @@ exports.createNewUser = (req, res) => {
                 if (err) {
                     console.log("err::", err);
                     res.send(err)
-                    res.json({ status: false, message: 'account not created err', data: user })
+                    res.json({ status: 400, message: 'account not created err', data: user })
                 } else {
                     console.log("created::", user);
-                    res.json({ status: true, message: 'account created successfully', data: user.insertId })
+                    res.json({ status: 200, message: 'account created successfully', data: user.insertId })
                 }
                 
             } catch (error) {console.log('error while creating user');}

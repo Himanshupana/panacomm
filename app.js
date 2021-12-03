@@ -42,7 +42,7 @@ app.use('/api/v1/users', userRoutes);
 app.use('/api/v1/questions', queRoutes );
 
 //create question routes
-// app.use('/api/v1/answers', ansRoutes );
+app.use('/api/v1/answers', ansRoutes );
 
 app.listen(port,()=>{
     console.log('running on http://localhost:3000');
