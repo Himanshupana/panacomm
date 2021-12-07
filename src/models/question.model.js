@@ -19,4 +19,14 @@ Question.getAllQuestions = (result)=>{
     })
 }
 
+Question.askQuestion = (data,result)=>{
+    db.queID(`insert into questions set ?`, data, (err, res)=>{
+        if (err) {
+            console.log(err);
+        }else{
+            console.log(res);
+        }
+    })
+}
+
 module.exports = Question

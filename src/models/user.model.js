@@ -11,7 +11,7 @@ var User = function(user){
 
 // get all user 
 User.getallusers = (result)=>{
-    db.query('select * from users',(err, res)=>{
+    db.query('select userID, name, email, job_profile, department from users',(err, res)=>{
         if(err){
             console.log("error::",err);
             result(err, null)
@@ -23,7 +23,7 @@ User.getallusers = (result)=>{
 }
 //get user by id
 User.getUserByID = (id,result)=>{
-    db.query('select * from users where userID =?',id, (err, res)=>{
+    db.query('select userID, name, email, job_profile, department from users where userID =?',id, (err, res)=>{
         if(err){
             console.log('not found or invalid req');
             result(err,null)
@@ -38,7 +38,7 @@ User.getUserByID = (id,result)=>{
 User.LoginUser = (userData, result)=>{
     console.log('data::',userData);
     try{
-        db.query(`select * from users where email='${userData.email}' and pwd='${userData.pwd}'`,(err, res)=>{
+        db.query(`select userID, name, email, job_profile, department from users where email='${userData.email}' and pwd='${userData.pwd}'`,(err, res)=>{
             if(err){
                 console.log(err);
                 result(err, null)
@@ -84,6 +84,9 @@ User.updateUser = (id, updateData, result)=>{
         }
     })
 }
-
+ //find user
+ User.find = (email) =>{
+    return db.query('SELECT * FROM users WHERE email = ?', [email]);
+  }
 
 module.exports = User

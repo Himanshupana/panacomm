@@ -15,7 +15,6 @@ app.use(cors(corsOption));
 //setoup the serve port
 const port = process.env.PORT||3000
 
-
 //parse request data of content type app/x-www-form-rulence
 app.use(bodyParser.urlencoded({extended:false}))
 
